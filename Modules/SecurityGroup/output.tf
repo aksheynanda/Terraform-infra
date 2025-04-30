@@ -2,7 +2,7 @@ output "sg_eksCluster" {
   value = "aws_security_group.eks_cluster_sg.id"
 }
 output "workernode_sg" {
-  value = "aws_security_group.eks_cluster_sg.id"
+  value = "aws_security_group.worker_nodes_sg.id"
 }
 
 output "redis_sg" {

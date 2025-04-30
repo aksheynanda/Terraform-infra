@@ -38,7 +38,7 @@ resource "aws_route_table" "route_pub" {
   vpc_id = aws_vpc.main_vpc.id
 
   route {
-    cidr_block = "10.0.0.0/24"
+    cidr_block = "10.0.0.0/16"
     gateway_id = "local"
   }
 
@@ -97,7 +97,7 @@ resource "aws_route_table" "route_prieks_A" {
 
   route {
     ipv6_cidr_block        = "::/0"
-    egress_only_gateway_id = aws_nat_gateway.eks_A.id
+    gateway_id = aws_nat_gateway.eks_A.id
   }
 
   tags = {
@@ -116,7 +116,7 @@ resource "aws_route_table" "route_prieks_B" {
 
   route {
     ipv6_cidr_block        = "::/0"
-    egress_only_gateway_id = aws_nat_gateway.eks_B.id
+    gateway_id = aws_nat_gateway.eks_B.id
   }
 
   tags = {
