@@ -46,17 +46,17 @@ resource "aws_eks_cluster" "EKS" {
   }
 }
 
-resource "aws_eks_addon" "example" {
+resource "aws_eks_addon" "vpc-cni" {
   cluster_name = aws_eks_cluster.eks_secrets.name
   addon_name   = "vpc-cni"
 }
 
-resource "aws_eks_addon" "example" {
+resource "aws_eks_addon" "coredns" {
   cluster_name = aws_eks_cluster.eks_secrets.name
   addon_name   = "coredns"
 }
 
-resource "aws_eks_addon" "example" {
+resource "aws_eks_addon" "ebs" {
   cluster_name = aws_eks_cluster.eks_secrets.name
   addon_name   = "EBS CSI"
 }
