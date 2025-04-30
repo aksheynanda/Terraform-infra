@@ -1,3 +1,13 @@
+terraform {
+  required_version = ">= 1.0"
+  backend "s3" {
+    bucket = "test-k8-backend"
+    key    = "terraform/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
+
 module "vpc"{
 source = "./Modules/VPC"
 }
