@@ -26,6 +26,7 @@ phases:
           cat tfplan.txt
           
         elif [ "$TF_ACTION" = "apply" ]; then
+          terraform plan -out=tfplan.out
           terraform apply -auto-approve > tfapply.txt
           cat tfapply.txt
         else
