@@ -27,7 +27,7 @@ phases:
           
         elif [ "$TF_ACTION" = "apply" ]; then
           terraform plan -out=tfplan.out
-          terraform apply -auto-approve > tfapply.txt
+          terraform apply -auto-approve "tfplan.out" > tfapply.txt
           cat tfapply.txt
         else
           echo "Invalid TF_ACTION value: $TF_ACTION" && exit 1
