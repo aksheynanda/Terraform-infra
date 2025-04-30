@@ -47,17 +47,17 @@ resource "aws_eks_cluster" "EKS" {
 }
 
 resource "aws_eks_addon" "vpc-cni" {
-  cluster_name = aws_eks_cluster.eks_secrets.name
+  cluster_name = aws_eks_cluster.EKS.name
   addon_name   = "vpc-cni"
 }
 
 resource "aws_eks_addon" "coredns" {
-  cluster_name = aws_eks_cluster.eks_secrets.name
+  cluster_name = aws_eks_cluster.EKS.name
   addon_name   = "coredns"
 }
 
 resource "aws_eks_addon" "ebs" {
-  cluster_name = aws_eks_cluster.eks_secrets.name
+  cluster_name = aws_eks_cluster.EKS.name
   addon_name   = "EBS CSI"
 }
 
@@ -97,7 +97,7 @@ resource "aws_eks_node_group" "worker_nodes" {
 
 data "tls_certificate" "irsa" {
   depends_on = [aws_eks_node_group.worker_nodes]
-  url = aws_eks_cluster.example.identity[0].oidc[0].issuer
+  url = aws_eks_cluster.EKS.identity[0].oidc[0].issuer
 }
 
 resource "aws_iam_openid_connect_provider" "irsa" {
