@@ -7,7 +7,7 @@ resource "aws_kms_key" "eks_secrets" {
 
 resource "aws_eks_cluster" "EKS" {
   name     = "eks-cluster"
-  role_arn = var.eks_role
+  role_arn = "arn:aws:iam::851765306105:role/K8_ClusterRole"
 
   vpc_config {
     subnet_ids = [
