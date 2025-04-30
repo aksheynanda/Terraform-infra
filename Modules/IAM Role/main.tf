@@ -5,7 +5,7 @@ resource "aws_iam_role" "K8_Cluster" {
   Version = "2012-10-17"
   Statement = [
     {
-      Action = ["sts:AssumeRole",sts:TagSession]
+      Action = ["sts:AssumeRole","sts:TagSession"]
       Effect = "Allow"
       Sid    = ""
       Principal = {
