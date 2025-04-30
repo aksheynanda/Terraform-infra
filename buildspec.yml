@@ -20,9 +20,9 @@ phases:
     commands:
       - echo "Running Terraform ${TF_ACTION}..."
       - |
-        if [ "$TF_ACTION" == "plan" ]; then
+        if [ "$TF_ACTION" = "plan" ]; then
           terraform plan -out=tfplan.out
-        elif [ "$TF_ACTION" == "apply" ]; then
+        elif [ "$TF_ACTION" = "apply" ]; then
           terraform apply -auto-approve tfplan.out || terraform apply -auto-approve
         else
           echo "Invalid TF_ACTION value: $TF_ACTION" && exit 1
