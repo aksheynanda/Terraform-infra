@@ -23,7 +23,7 @@ resource "aws_security_group" "rds_sg" {
 }
 
 resource "aws_security_group" "redis_sg" {
-  name        = "redis-sg"
+  name        = "redis_sg"
   description = "Allow Redis traffic from Kubernetes worker nodes"
   vpc_id      = var.vpc_id
 
@@ -48,7 +48,7 @@ resource "aws_security_group" "redis_sg" {
 
 
 resource "aws_security_group" "add_pod_sg" {
-  name        = "add-pod-sg"
+  name        = "add_pod_sg"
   description = "Allow inbound traffic to RDS from Kubernetes worker nodes"
   vpc_id      = var.vpc_id
   egress {
@@ -65,7 +65,7 @@ resource "aws_security_group" "add_pod_sg" {
 
 
 resource "aws_security_group" "latest_sg" {
-    name        = "latest-pod-sg"
+    name        = "latest_pod_sg"
     description = "Allow inbound traffic to RDS from Kubernetes worker nodes"
     vpc_id      = var.vpc_id
     egress {

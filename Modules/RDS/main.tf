@@ -18,7 +18,6 @@ resource "aws_db_subnet_group" "default" {
 resource "aws_db_instance" "postgres" {
   identifier             = "my-postgres-db"
   engine                 = "postgres"
-  engine_version         = "14.7"
   instance_class         = "db.t4g.micro"
   allocated_storage      = 20
   storage_type           = "gp2"

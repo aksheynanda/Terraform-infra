@@ -15,5 +15,5 @@ output "rds_subnet2" {
 }
 
 output "vpc_id" {
-  value = "aws_vpc.main_vpc.id"
+  value = aws_vpc.main_vpc.id
 }

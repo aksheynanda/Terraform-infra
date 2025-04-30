@@ -30,6 +30,7 @@ eks_nodegroup_role = module.IAM.eks_nodegroup_role
 eks_role = module.IAM.eks_role
 sg_eksCluster = module.SecurityGroup.sg_eksCluster
 workernode_sg = module.SecurityGroup.workernode_sg
+depends_on = [module.IAM]
 }
 
 module "rds"{

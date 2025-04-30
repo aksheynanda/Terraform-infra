@@ -5,7 +5,7 @@ resource "aws_iam_role" "K8_Cluster" {
   Version = "2012-10-17"
   Statement = [
     {
-      Action = "sts:AssumeRole"
+      Action = ["sts:AssumeRole",sts:TagSession]
       Effect = "Allow"
       Sid    = ""
       Principal = {
@@ -20,6 +20,27 @@ resource "aws_iam_role_policy_attachment" "eks-cluster" {
   role       = aws_iam_role.K8_Cluster.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
 }
+
+resource "aws_iam_role_policy_attachment" "eks-cluster1" {
+  role       = aws_iam_role.K8_Cluster.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSBlockStoragePolicy"
+}
+
+resource "aws_iam_role_policy_attachment" "eks-cluster2" {
+  role       = aws_iam_role.K8_Cluster.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSComputePolicy"
+}
+
+resource "aws_iam_role_policy_attachment" "eks-cluster3" {
+  role       = aws_iam_role.K8_Cluster.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSLoadBalancingPolicy"
+}
+
+resource "aws_iam_role_policy_attachment" "eks-cluster4" {
+  role       = aws_iam_role.K8_Cluster.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSNetworkingPolicy"
+}
+
 
 #Creating IAM role or EKS NodeGroup
 resource "aws_iam_role" "K8_nodegroup" {

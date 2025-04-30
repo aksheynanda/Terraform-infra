@@ -24,7 +24,7 @@ resource "aws_subnet" "main_subnet_pub_A" {
 resource "aws_subnet" "main_subnet_pub_B" {
   vpc_id     = aws_vpc.main_vpc.id
   availability_zone = "us-east-1b"
-  cidr_block = "10.0.2.48/28"
+  cidr_block = "10.0.3.48/28"
 
   tags = {
     Name = "pub_ALB_B"
@@ -91,7 +91,7 @@ resource "aws_route_table" "route_prieks_A" {
   vpc_id = aws_vpc.main_vpc.id
 
   route {
-    cidr_block = "10.0.0.0/24"
+    cidr_block = "10.0.0.0/16"
     gateway_id = "local"
   }
 
@@ -110,7 +110,7 @@ resource "aws_route_table" "route_prieks_B" {
   vpc_id = aws_vpc.main_vpc.id
 
   route {
-    cidr_block = "10.0.0.0/24"
+    cidr_block = "10.0.0.0/16"
     gateway_id = "local"
   }
 
@@ -165,7 +165,7 @@ resource "aws_route_table" "route_pri" {
   vpc_id = aws_vpc.main_vpc.id
 
   route {
-    cidr_block = "10.0.0.0/24"
+    cidr_block = "10.0.0.0/16"
     gateway_id = "local"
   }
 
