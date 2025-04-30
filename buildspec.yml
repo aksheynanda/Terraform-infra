@@ -21,9 +21,13 @@ phases:
       - echo "Running Terraform ${TF_ACTION}..."
       - |
         if [ "$TF_ACTION" = "plan" ]; then
-          terraform plan -out=tfplan.out
+          terraform validate
+          terraform plan -out=tfplan.out > tfplan.txt
+          cat tfplan.txt
+          
         elif [ "$TF_ACTION" = "apply" ]; then
-          terraform apply -auto-approve tfplan.out || terraform apply -auto-approve
+          terraform apply -auto-approve tfplan.out || terraform apply -auto-approve > tfapply.txt
+          cat tfapply.txt
         else
           echo "Invalid TF_ACTION value: $TF_ACTION" && exit 1
         fi
