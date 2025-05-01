@@ -43,8 +43,8 @@ resource "aws_route_table" "route_pub" {
   }
 
   route {
-    ipv6_cidr_block        = "::/0"
-    egress_only_gateway_id = aws_internet_gateway.gw.id
+    cidr_block        = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.gw.id
   }
 
   tags = {
@@ -96,7 +96,7 @@ resource "aws_route_table" "route_prieks_A" {
   }
 
   route {
-    ipv6_cidr_block        = "::/0"
+    cidr_block        = "0.0.0.0/0"
     gateway_id = aws_nat_gateway.eks_A.id
   }
 
@@ -115,7 +115,7 @@ resource "aws_route_table" "route_prieks_B" {
   }
 
   route {
-    ipv6_cidr_block        = "::/0"
+    cidr_block        = "0.0.0.0/0"
     gateway_id = aws_nat_gateway.eks_B.id
   }
 
@@ -177,11 +177,11 @@ resource "aws_route_table" "route_pri" {
 # association
 
 resource "aws_route_table_association" "route_pri_ass_A" {
-  subnet_id      = aws_subnet.main_subnet_prieks_A.id
+  subnet_id      = aws_subnet.main_subnet_prirds_A.id
   route_table_id = aws_route_table.route_pri.id
 }
 resource "aws_route_table_association" "route_pri_ass_B" {
-  subnet_id      = aws_subnet.main_subnet_prieks_B.id
+  subnet_id      = aws_subnet.main_subnet_prirds_B.id
   route_table_id = aws_route_table.route_pri.id
 }
 
